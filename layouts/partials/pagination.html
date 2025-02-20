@@ -1,0 +1,7 @@
+<nav class="navigation">
+    <div class="nav-links">
+        {{ range .Paginator.Pagers }}
+        <a class="page-numbers{{ if eq . .Paginator }} current{{ end }}" href="{{ .URL }}">{{ .PageNumber }}</a>
+        {{ end }}
+    </div>
+</nav>

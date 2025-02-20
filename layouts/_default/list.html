@@ -1,0 +1,97 @@
+{{ define "main" }}
+ <div class="articleContainer">
+{{ partial "archive-stats.html" . }}
+<div class="desktop-only">
+    <div class="page--archive">
+        {{ range .Pages.ByPublishDate.Reverse.GroupByDate "2006" }}
+        {{ if (where .Pages "Section" "in" (slice "post" "memo")) }}
+        <h2 class="archive--title__year">{{ .Key }}</h2>
+        {{ range .Pages.ByPublishDate.Reverse.GroupByDate "1月" }}
+        <h3 class="archive--title__month">{{ .Key }}</h3>
+        <ul class="archive--list">
+            {{ range (where .Pages "Section" "in" (slice "post" "memo")) }}
+           <li class="archive--item">
+
+    <div class="archive--info">
+        <div class="archive--title">
+            <a href="{{ .RelPermalink }}">
+                {{ .Title }}
+            </a>
+        </div>
+<div class="archive-title">
+        <div class="archive--meta">
+<span> <time datetime='{{.Date.Format "2006-01-02 15:04:01" }}'
+                        class="humane--time">{{ .Date
+                        | time.Format
+                        ":date_long"
+                        }}</time><span class="sep"></span>
+    {{ if .Params.categories }}
+                    
+                    {{ range (.GetTerms "categories") }}
+                    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                    {{ end }}
+                    {{ end }}
+<span class="sep"></span>
+                    {{ $tags := (.GetTerms "tags") }}
+    {{ if gt (len $tags) 2 }}
+      {{ range (first 2 $tags) }}
+      
+        #<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+      
+      {{ end }}
+    {{ else }}
+      {{ range $tags }}
+      
+        #<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+      
+      {{ end }}
+    {{ end }}
+       </span>
+        
+    </div>
+    </div> 
+</div>
+        <!-- 检查文章是否有缩略图，如果没有则使用默认图片 -->
+        {{ if .Params.image }}
+        <img src="{{ .Params.image | relURL }}" class="block--cover" itemprop="image" alt="{{ .Title }}">
+        {{ else }}
+        <img src="{{ "/images/1.jpg" | absURL }}" class="block--cover" itemprop="image" alt="{{ .Title }}">
+        {{ end }}
+  
+</li>
+            {{ end }}
+        </ul>
+        {{ end }}
+        {{ end }}
+        {{ end }}
+    </div>
+</div>
+
+<div class="mobile-only">
+    {{ $years := (where (where .Site.Pages "Type" "post") "Kind" "page").GroupByDate "2006" }}
+    {{ range $year := $years }}
+    <div class="year-section">
+        <h3 class="year-title">{{ $year.Key }}</h3>
+        {{ $month := (where $year.Pages "Type" "post").GroupByDate "01月" }}
+        {{ range $month }}
+        <div class="month-card">
+            
+            <ul class="listing">
+                {{ range .Pages }}
+                <li>
+                     <div class="month-indicator">{{ .Date.Format "01月" }}</div>
+                    <div class="archive-title">
+                        <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+                    </div>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+</div>
+</div>
+
+{{ end }}
+                           

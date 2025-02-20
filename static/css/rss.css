@@ -1,0 +1,72 @@
+/* 文章容器 */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 单篇文章样式 */
+.article {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.article h2 a {
+    color: #333;
+    text-decoration: none;
+}
+
+.article h2 a:hover {
+    color: #0073aa;
+}
+
+.meta {
+    color: #666;
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+
+.meta time {
+    margin-left: 15px;
+}
+
+.description {
+    color: #444;
+    line-height: 1.6;
+}
+
+.icon {
+    max-width: 32px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.pagination {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    background: #fff;
+}
+
+.pagination a.active {
+    background: #0073aa;
+    color: #fff;
+    border-color: #0073aa;
+}
+
+.pagination a:hover {
+    background: #f5f5f5;
+}

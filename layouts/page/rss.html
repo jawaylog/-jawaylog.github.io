@@ -1,0 +1,130 @@
+{{ define "main" }}
+<style>
+/* 文章容器 */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 单篇文章样式 */
+.article {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.article h2 a {
+    color: #333;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    width: 600px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.article h2 a:hover {
+    color: #0073aa;
+}
+
+.article-title a:hover {
+    color: #0073aa;
+}
+
+.meta {
+    display: flex;
+    align-items: center; /* 垂直居中对齐 */
+    justify-content: flex-start; /* 水平起始对齐 */
+    gap: 5px; /* 元素之间的间距 */
+    color: #666;
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+
+.meta img {
+    max-width: 32px;
+    height: auto;
+    border-radius: 50%; /* 圆形图标 */
+}
+
+.meta .info {
+    display: flex;
+    align-items: center; /* 垂直居中对齐 */
+    gap: 5px; /* 元素之间的间距 */
+}
+
+.meta .info span.site, .meta .info time {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px; /* 与前一个元素的间距 */
+}
+
+.description {
+    color: #444;
+    line-height: 1.6;
+}
+
+.icon {
+    max-width: 36px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.pagination {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    background: #fff;
+}
+
+.pagination a.active {
+    background: #0073aa;
+    color: #fff;
+    border-color: #0073aa;
+}
+
+.pagination a:hover {
+    background: #f5f5f5;
+}
+
+</style>
+
+
+
+
+<div class="articleContainer">
+    <h1>订阅文章列表</h1>
+    {{ range .Site.Data.rss.articles }}
+    <article class="article">
+        <h2>
+            <a href="{{ .link }}" target="_blank" rel="noopener">{{ .title }}</a>
+        </h2>
+        <div class="meta">
+            {{ if .icon }}
+            <img src="{{ .icon }}" alt="{{ .site_name }} 图标" class="icon">
+            {{ end }}
+            <div class="info">
+                <span class="site">{{ .site_name }}</span>
+                <time datetime="{{ .time }}">{{ .time }}</time>
+            </div>
+        </div>
+        <p class="description">{{ .description }}</p>
+    </article>
+    {{ end }}
+</div>
+{{ end }}

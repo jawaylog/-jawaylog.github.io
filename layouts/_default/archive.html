@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="articleContainer">
+    <!-- 标题 -->
+    <h2 class="archive--title__year">{{ .Title }}</h2>
+    <h4 class="archive-title">共计 {{ len (where .Site.RegularPages "Section" "post") }} 篇日志</h4>
+
+    <!-- 分类列表 -->
+    <div class="category-list">
+        <ul>
+            {{- range $taxonomy := .Site.Taxonomies.categories -}}
+            <li>
+                <a href="/categories/{{ $taxonomy.Page.Title | urlize }}">
+                    <span>#{{ $taxonomy.Page.Title }}</span>
+                    <span>({{ $taxonomy.Count }})</span>
+                </a>
+            </li>
+            {{- end -}}
+        </ul>
+    </div>
+
+    <!-- 文章归档 -->
+    <div class="page--archive">
+        {{ range .Pages.ByPublishDate.Reverse.GroupByDate "2006" }}
+        <div class="year-section">
+            <h2 class="archive--title__year">{{ .Key }}</h2>
+            {{ range .Pages.ByPublishDate.Reverse.GroupByDate "1月" }}
+            <div class="month-card">
+                <h3 class="archive--title__month">{{ .Key }}</h3>
+                <ul class="listing">
+                    {{ range .Pages }}
+                    <li>
+                        <div class="archive-title">
+                            <a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
+                            <span class="archive-date">{{ .Date.Format "01-02" }}</span> <!-- 日期显示在最右边 -->
+                        </div>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="{{ $.Site.LanguageCode | default " en" }}" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} - {{ end }}{{ .Site.Title }}{{ end }}</title>
+    {{ partial "head.html" . }}
+</head>
+
+<body>
+    <script>
+        window.DEFAULT_THEME = "{{ .Site.Params.defaultTheme }}";
+        if (localStorage.getItem("theme") == null) {
+            localStorage.setItem("theme", window.DEFAULT_THEME);
+        }
+        if (localStorage.getItem("theme") == "dark") {
+            document.querySelector("body").classList.add("dark");
+        }
+        if (localStorage.getItem("theme") == "auto") {
+            document.querySelector("body").classList.add("auto");
+        }
+
+    </script>
+    <main class="layout">
+        <div class="navbar">
+            <div class="moblie--icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"
+                    class="search--icon">
+                    <path fill="currentColor" fill-rule="evenodd"
+                        d="M4.092 11.06a6.95 6.95 0 1 1 13.9 0 6.95 6.95 0 0 1-13.9 0m6.95-8.05a8.05 8.05 0 1 0 5.13 14.26l3.75 3.75a.56.56 0 1 0 .79-.79l-3.73-3.73A8.05 8.05 0 0 0 11.042 3z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <svg class="menu--icon" width="1em" height="1em" viewBox="0 0 24 14" fill="currentColor"
+                    aria-hidden="true">
+                    <line x1="24" y1="1" y2="1" stroke="currentColor" stroke-width="2"></line>
+                    <line x1="24" y1="7" x2="4" y2="7" stroke="currentColor" stroke-width="2"></line>
+                    <line x1="24" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2"></line>
+                </svg>
+            </div>
+            <div class="js-contentFixed">
+                <div class="site--info">
+                    <a href="{{ site.Home.Permalink }}">{{ $logo := resources.Get "images/avatar.jpeg" }}
+                        <img src="{{ $logo.RelPermalink }}" class="avatar" />
+                    </a>
+                    <div class="site--info__content">
+                        <h1 class="site--title">{{ $.Site.Title }}</h1>
+                        <div class="site--description"></div>
+                    </div>
+                </div>
+                {{ partial "navigation.html" . }}
+                <div class="site--footer__sns">
+                    {{ partial "sns.html" . }}
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="search--area">
+                <form role="search" method="get" class="search-form" action="/search">
+                    <label class="search-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path fill="currentColor" fill-rule="evenodd"
+                                d="M4.092 11.06a6.95 6.95 0 1 1 13.9 0 6.95 6.95 0 0 1-13.9 0m6.95-8.05a8.05 8.05 0 1 0 5.13 14.26l3.75 3.75a.56.56 0 1 0 .79-.79l-3.73-3.73A8.05 8.05 0 0 0 11.042 3z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <input type="search" class="search-field" placeholder="Search …" value="" name="s"
+                            id="searchbox" autocomplete="off">
+                    </label>
+                    <input type="submit" class="search-submit" value="Search">
+                </form>
+            </div>
+            {{ block "main" . }}{{ end }}
+            {{ partial "footer.html" . }}
+        </div>
+    </main>
+</body>
+
+</html>

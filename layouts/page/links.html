@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="articleContainer">
+    <header class="archive--header">
+
+      <h4 class="welog">
+            <p>在博客的广袤天地中，友情链接确实如同开启不同奇妙世界的钥匙。</br>
+            每个链接背后都可能隐藏着一个独特的故事、一种别样的视角或一份深邃的思考。</p>
+        </h4>
+    </header>
+    <div class="container">
+        {{ range $friendlink := .Site.Data.friendlinks.friendlinks }}
+        <div class="card" title="{{ $friendlink.description }}">
+            <img src="{{ $friendlink.pre }}" alt="{{ $friendlink.name }}" class="card-img">
+            <div class="card-content">
+                <a href="{{ $friendlink.url }}" target="_blank" rel="noopener noreferrer">
+                    <h3>{{ $friendlink.name }}</h3>
+                </a>
+                <div class="link-description">{{ $friendlink.description }}</div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

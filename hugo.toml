@@ -1,0 +1,72 @@
+baseURL = 'https://xieha.cn/'
+languageCode = 'zh-cn'
+defaultContentLanguage = 'zh-cn'
+title = '微影随行'
+theme = 'hera'
+dataDir = "data"
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  series = 'series'
+
+[Params]
+  breakpoint = 1024
+  search = true
+  indexName = 'new'
+  searchKey = '6a89fef9acb34b7e9eff2d4941ee1bbd'
+  searchAPPID = 'QT6ZNT8B2U'
+
+  post_like = true
+  post_view = false
+  actionDomain = 'https://cf.xieha.cn/'
+  description = 'A simple and fast blog framework written in Go.'
+  toc = true
+  mainSections = ['post','memo']
+  showMobile = true
+ subtitle = '用文字与照片记录生活点滴'
+ 
+
+  
+
+  showAuthor = true
+  authorName = 'welog'
+  authorDescription = 'computer loser'
+  authorAvatar = 'https://secure.gravatar.com/avatar/2fd7e2e17a671f8e3fade0706e0a667e?s=128&d=mm&r=g'
+
+
+[Params.artalk]
+  server = 'https://a.xieha.cn/'
+  site = '微影随行'
+
+[outputs]
+  home = ["HTML", "JSON", "RSS", "SITEMAP"]
+  page = ["HTML"]
+
+[menu]
+  [[menu.main]]
+  name = "微文章"
+  url = "/post/"
+  weight = 1
+
+
+  [[menu.main]]
+  name = "微言语"
+  url = "/page/welog/"
+  weight = 2
+
+
+  [[menu.main]]
+  name = "朋友圈"
+  url = "/page/rss/"
+  weight = 3
+
+
+  [[menu.main]]
+  name = "伙伴们"
+  url = "/page/friends/"
+  weight = 6
+
+
+
+

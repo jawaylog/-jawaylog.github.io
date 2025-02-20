@@ -1,0 +1,126 @@
+.archive {
+    &--list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 15px;
+        margin-bottom: 30px;
+        margin-top: 10px;
+    }
+
+    &--title {
+        font-size: 18px;
+        line-height: 1.4;
+        height: 2.8em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+
+        &__year {
+            font-size: 22px;
+            font-weight: 900;
+            margin-top: 30px;
+        }
+
+        &--cover {
+            flex: 0 0 auto;
+            margin-left: 15px;
+            width: var(--hera-thumbnail-width);
+            img {
+                width: var(--hera-thumbnail-width);
+                height: var(--hera-thumbnail-height);
+                max-width: 128px; /* 限制最大宽度 */
+                max-height: 128px; /* 限制最大高度 */
+                border-radius: 4px;
+                object-fit: cover;
+            }
+        }
+    }
+
+    &--meta {
+        font-size: 12px;
+        color: var(--hera-text-gray);
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px; /* 增加分类和标签之间的间距 */
+    }
+
+    &--date {
+        font-weight: bold; /* 日期加粗 */
+    }
+
+    &--category {
+        font-style: italic; /* 分类斜体 */
+        color: var(--hera-text-gray-darker);
+    }
+
+    &--tags {
+        font-style: normal;
+        color: var(--hera-text-gray-darker);
+    }
+
+    &--item {
+        padding: 15px;
+        background-color: var(--hera-background-gray-lightest);
+        border-radius: 10px;
+        display: flex; /* 添加flex布局 */
+        align-items: center; /* 垂直居中 */
+        gap: 15px; /* 增加图片和内容之间的间距 */
+        a {
+            &:hover {
+                color: var(--hera-main-color);
+            }
+        }
+    }
+
+    &--thumbnail {
+        flex: 0 0 auto;
+        width: var(--hera-thumbnail-width);
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+    }
+
+    &--info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .archive {
+        &--list {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+            grid-gap: 5px;
+            margin-bottom: 25px;
+             margin-top: 10px;
+        }
+
+        &--title {
+            font-size: 16px;
+        }
+
+        &--item {
+            padding: 10px;
+            
+        }
+    }
+}
+
+.archive--tagList {
+    display: flex;
+    flex-wrap: wrap;
+}
+.archive--tagItem {
+    margin: 10px;
+    background-color: var(--hera-background-gray-lightest);
+    padding: 3px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--hera-text-gray-light);
+}

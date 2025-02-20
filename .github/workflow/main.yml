@@ -1,0 +1,7 @@
+- name: Search
+    uses: caibingcheng/hugo-algolia2@v1
+    with:
+        input: "content/zh-cn/story/**"
+        index: "new"
+        apikey: ${{ secrets.ALGOLIA_WRITE_KEY }}
+        appid: "QT6ZNT8B2U"

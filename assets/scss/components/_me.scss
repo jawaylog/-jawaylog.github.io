@@ -1,0 +1,194 @@
+/* 标题与列表的间距 */
+/* 前四篇文章样式保持不变 */
+.articleList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+.post--item, .post--itemlog {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    text-align: left;
+    box-sizing: border-box;
+    background-color: none; /* 确保背景颜色为白色 */
+    font-weight: normal; /* 去掉字体加粗 */
+}
+
+/* 后四篇及分页样式，背景为白色 */
+.post--itemlog.card {
+    display: flex;
+    flex-direction: row-reverse; /* 文字在左侧，图片在右侧 */
+    width: calc(50% - 10px); /* 每行两列 */
+    margin-bottom: 20px;
+    margin-right: 10px; /* 两列之间的间距 */
+    box-sizing: border-box;
+    background-color: none; /* 背景设置为白色 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* 添加轻微阴影 */
+    border-radius: 5px; /* 保持圆角 */
+    padding: 10px; /* 增加内边距 */
+    overflow: hidden; /* 确保内容不会超出容器 */
+}
+
+.post--itemlog.card .post--image {
+    flex-shrink: 0; /* 防止图片在布局中被压缩 */
+    width: 200px; /* 设置图片宽度，或者使用百分比 */
+    margin-left: 10px; /* 图片与文字内容之间的间距 */
+}
+
+.post--itemlog.card .post--image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px; /* 图片圆角 */
+}
+
+.post--itemlog.card .post--info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 垂直居中对齐 */
+}
+
+/* 确保在小屏幕或特定布局下堆叠布局 */
+@media (max-width: 480px) {
+    .post--itemlog.card {
+        flex-direction: column;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .post--itemlog.card .post--image {
+        width: 100%; /* 使图片宽度占满容器 */
+        margin-left: 0;
+        margin-bottom: 10px; /* 图片与文字内容之间的间距 */
+    }
+}
+/* 后四篇及分页样式标题字体颜色和大小 */
+.post--itemlog.card .post--title a {
+    color: #333333; /* 蓝色字体 */
+    font-size: 18px; /* 标题字体大小为16px */
+    font-weight: bold; /* 去掉加粗 */
+}
+
+/* 前四篇文章标题字体颜色改为蓝色 */
+.post--item .post--title a {
+    color: #333333; /* 蓝色字体 */
+    font-size: 18px;
+    text-decoration: none; /* 去掉下划线 */
+}
+
+/* 可选：添加悬停效果，前后统一 */
+.post--item .post--title a:hover,
+.post--itemlog.card .post--title a:hover {
+    color: #0056b3; /* 悬停时变为深蓝色 */
+    text-decoration: underline; /* 悬停时显示下划线 */
+}
+
+/* 图片样式 */
+.post--itemlog .post--image {
+    flex: 0 0 135px; /* 图片固定宽度 */
+    margin-left: 8px; /* 图片与文字的间距 */
+}
+
+.post--itemlog .post--image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px; /* 图片圆角 */
+
+}
+
+/* 文字信息区域 */
+.post--itemlog .post--info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+}
+
+/* 时间和分类信息，时间在前，分类在后 */
+.post--itemlog .meta {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px; /* 时间与分类之间的间距 */
+    font-size: 14px;
+    color: #666;
+    flex-wrap: wrap; /* 响应式支持换行 */
+}
+
+.post--itemlog .meta time {
+    font-style: italic; /* 时间斜体显示 */
+}
+
+.post--itemlog .meta a {
+    text-decoration: none; /* 去除下划线 */
+    color: #666; /* 分类文字颜色 */
+    font-size: 14px;
+}
+
+
+@media (max-width: 667px) {
+    .post--itemlog.card {
+        width: calc(50% - 10px); /* 保持两列布局 */
+    }
+    .post--itemlog .meta {
+        gap: 3px; /* 小屏幕间距缩小 */
+    }
+}
+
+@media (max-width: 480px) {
+    .post--itemlog.card {
+        display: flex;
+        flex-direction: row-reverse; /* 图片在右侧 */
+        width: 100px; /* 每行一列 */
+        padding: 5px; /* 增加内边距 */
+        
+    }
+   
+     .post--itemlog .post--image img {
+             width: 100%;
+
+}
+
+.cover {
+    max-width: 100%; /* 图片宽度最大为容器宽度的100% */
+    height: 150px; /* 高度自动，保持图片比例 */
+    object-fit: cover; /* 确保图片覆盖整个容器，同时保持宽高比 */
+    object-position: center; /* 图片在容器中居中显示 */
+}
+
+.welog, h4 {
+    font-size: 14px;
+}
+     
+}
+
+/* 定义一个类，用于在移动设备上隐藏内容 */
+/* 定义一个类，用于在移动设备上隐藏内容 */
+.desktop-only {
+    display: block; /* 默认在桌面端显示 */
+}
+
+.mobile-only {
+    display: none; /* 默认在移动设备上隐藏 */
+}
+
+/* 移动设备样式 */
+@media (max-width: 768px) {
+    /* 在移动设备上隐藏桌面端内容 */
+    .desktop-only {
+        display: none;
+    }
+
+    /* 在移动设备上显示移动端内容 */
+    .mobile-only {
+        display: block;
+    }
+}

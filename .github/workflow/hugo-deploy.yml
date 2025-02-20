@@ -1,0 +1,28 @@
+name: Deploy with Hugo
+on:
+  push:
+    branches:
+      - main # 或者你想触发的分支
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v3
+      with:
+        hugo-version: "latest" # 或指定具体版本
+        extended: true
+    - name: Build Site
+      run: hugo --minify
+    - name: Deploy to Server
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh -o StrictHostKeyChecking=no welog@http://124.71.15.145/ "mkdir -p ~/hugo_site"
+        rsync -avz --delete public/ welog@http://124.71.15.145/:~/hugo_site

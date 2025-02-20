@@ -1,0 +1,67 @@
+.layout {
+    margin: 0 auto;
+    display: flex;
+
+    .is-singleColumn &,
+    .page-template-template-map &,
+    .page-template-template-wide & {
+        flex-direction: column;
+    }
+}
+
+.content {
+    flex: 1 1 auto;
+    margin: 18px;
+    padding: 30px 0 5px;
+    background-color: var(--hera-background-white);
+    border-radius: 12px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.02);
+}
+
+.post--list,
+.layoutContainer,
+.articleContainer,
+.doubanContainer {
+    width: 92%;
+    max-width: var(--hera-column-width);
+    margin: 0 auto;
+}
+
+.articleContainer {
+    max-width: var(--hera-article-width);
+    padding-top: 15px;
+    min-height: calc(100vh - 50px);
+    box-sizing: border-box;
+}
+
+.doubanContainer {
+    --hera-article-width: 850px;
+}
+
+/* ----------------------------- */
+/* 响应式设计 */
+/* ----------------------------- */
+@media (min-width: 1920px) {
+    .articleContainer { max-width: 993px; }
+    .layoutContainer { max-width: 907px; }
+}
+
+@media (max-width: 1280px) {
+    .articleContainer { padding-top: 0; }
+}
+
+@media (max-width: 768px) {
+    .articleContainer {
+        width: 95%;
+        padding: 10px 3.5% 3.5%;
+    }
+}
+
+@media (max-width: 720px) {
+    .layout { flex-direction: column; }
+    .content {
+        margin: 0;
+        padding-top: 0;
+        border-radius: 0;
+    }
+}

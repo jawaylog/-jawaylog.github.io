@@ -1,0 +1,12 @@
+<!-- 移动端和桌面端共用部分模块 -->
+<h2 class="archive--title__year">{{ .Title }}</h2>
+<h4 class="archive-title">共计 {{ len (where .Site.RegularPages "Section" "post") }} 篇日志</h4>
+<div class="category-list">
+    <ul>
+        {{- range $taxonomy := .Site.Taxonomies.categories -}}
+        <li>
+            <a href="/categories/{{ $taxonomy.Page.Title | urlize }}"><span>#{{ $taxonomy.Page.Title }}</span><span>({{ $taxonomy.Count }})</span></a>
+        </li>
+        {{- end -}}
+    </ul>
+</div>
