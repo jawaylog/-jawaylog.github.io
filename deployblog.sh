@@ -7,7 +7,7 @@ set -e
 rm -rf public
 
 # 打包。even 是主题
-hugo -t farallon # if using a theme, replace with `hugo -t <YOURTHEME>`
+hugo -t hera # if using a theme, replace with `hugo -t <YOURTHEME>`
 
 # 进入打包文件夹
 # cd public

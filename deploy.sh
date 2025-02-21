@@ -10,7 +10,7 @@ rm -rf public
 hugo -t hera # if using a theme, replace with `hugo -t <YOURTHEME>`
 
 # 进入打包文件夹
- 
+ cd public
 
 # Add changes to git.
 
