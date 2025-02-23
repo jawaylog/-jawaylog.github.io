@@ -1,4 +1,3 @@
 # 忽略 articles.json 文件
 /data/rss/articles.json
-# 忽略 articles.json 文件
-/public/output.json
+
